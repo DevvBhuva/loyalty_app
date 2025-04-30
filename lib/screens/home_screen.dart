@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/card_model.dart';
 import 'card_detail_screen.dart';
+import 'view_card_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,7 +29,17 @@ class HomeScreen extends StatelessWidget {
               return ListTile(
                 title: Text(card?.cardName ?? 'Unnamed Card'),
                 subtitle: Text(card?.cardNumber ?? ''),
-                trailing: Text(card?.barcode ?? ''),
+                trailing: const Icon(Icons.arrow_forward),
+                onTap: () {
+                  if (card != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ViewCardScreen(card: card),
+                      ),
+                    );
+                  }
+                },
               );
             },
           );
