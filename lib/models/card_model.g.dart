@@ -21,6 +21,7 @@ class CardModelAdapter extends TypeAdapter<CardModel> {
       cardNumber: fields[1] as String,
       barcode: fields[2] as String,
       expirationDate: fields[3] as DateTime?,
+      cvv: fields[4] as String,
     );
   }
 
